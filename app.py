@@ -14,6 +14,7 @@ app.layout =  html.Div(
         html.H4('Information',style={'textAlign': 'center','fontSize':'30px'}),
         html.Div(id='live-update-text'),
         dcc.Graph(id='live-update-graph'),
+
         dcc.Interval(
             id='interval-component',
             interval=5*1000, # in milliseconds
@@ -24,6 +25,8 @@ app.layout =  html.Div(
 
 @app.callback(Output('live-update-text', 'children'),
               Input('interval-component', 'n_intervals'))
+
+
 
 def update_table(n):
     r = redis.Redis(host='152.3.65.126', port=6379)
@@ -71,9 +74,10 @@ def update_graph_live(n):
     fig=px.histogram(y=[metrics_json[f"avg-util-cpu{i}-60sec"] for i in range(4)],x = ["cpu1","cpu2","cpu3","cpu4"],
                     title="avg-util-60sec",labels={"x":"cpu","y":"utilization"},histfunc="avg")
 
+           
     return fig
 
     
     
 if __name__ == '__main__':
-    app.run_server(debug=True,port=5105)
+    app.run_server(host='0.0.0.0',port = 5105,debug=True)
