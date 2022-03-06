@@ -8,4 +8,4 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python","app.py","--port","5105","--host=0.0.0.0"]
+ENTRYPOINT ["python","app.py"]
