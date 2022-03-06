@@ -26,8 +26,6 @@ app.layout =  html.Div(
 @app.callback(Output('live-update-text', 'children'),
               Input('interval-component', 'n_intervals'))
 
-
-
 def update_table(n):
     r = redis.Redis(host='152.3.65.126', port=6379)
     metrics = r.get('rj133-proj3-output')
@@ -73,11 +71,7 @@ def update_graph_live(n):
     fig = make_subplots(rows=2, cols=1)
     fig=px.histogram(y=[metrics_json[f"avg-util-cpu{i}-60sec"] for i in range(4)],x = ["cpu1","cpu2","cpu3","cpu4"],
                     title="avg-util-60sec",labels={"x":"cpu","y":"utilization"},histfunc="avg")
-#     fig=px.histogram(y=[metrics_json[f"avg-util-cpu{i}-60min"] for i in range(4)],x = ["cpu1","cpu2","cpu3","cpu4"],
-#                     title="avg-util-60min",labels={"x":"cpu","y":"utilization"},histfunc="avg")
-#     fig.append_trace(trace0, 1, 1)
-#     fig.append_trace(trace1, 2, 1)
-           
+
     return fig
 
     
