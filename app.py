@@ -14,7 +14,6 @@ app.layout =  html.Div(
         html.H4('Information',style={'textAlign': 'center','fontSize':'30px'}),
         html.Div(id='live-update-text'),
         dcc.Graph(id='live-update-graph'),
-        dcc.Graph(id='live-update-graph1'),
         dcc.Interval(
             id='interval-component',
             interval=5*1000, # in milliseconds
