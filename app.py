@@ -45,6 +45,7 @@ def update_table(n):
     metrics = r.get('rj133-proj3-output')
     metrics_str = metrics.decode("utf-8")
     metrics_json = json.loads(metrics_str)
+    app.metrics=json.loads(metrics_str)
     style = {'padding': '5px', 'fontSize': '16px'}
     return [html.Span("number of 5sec: "+str(metrics_json["number of 5sec"])),
             html.Br(),
