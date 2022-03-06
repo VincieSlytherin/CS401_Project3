@@ -1,0 +1,7 @@
+flask
+flask-restful
+joblib
+numpy
+redis
+dash
+plotly
